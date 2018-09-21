@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style></style>
+</head>
+<body>
+	<button id ="bt">获取数据</button>
+</body>
+<script>
+	let worker = new SharedWorker('t1.js')
+	worker.port.onmessage = e=>{
+		console.log(e)
+	}
+	let btn = document.querySelector('#btn')
+	btn.addEventListener('click',e=>{
+		worker.port.postMessage('get-data')
+	})
+
+</script>
+</html>
